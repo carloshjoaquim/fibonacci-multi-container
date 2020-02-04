@@ -9,10 +9,10 @@ script:
     - docker run -e -CI=true carloshj2011/react-test npm test -- --coverage
 
 after_sucess:
-    - docker build -t carloshj2011/fibonacci-client -f ./client
-    - docker build -t carloshj2011/fibonacci-nginx -f ./nginx
-    - docker build -t carloshj2011/fibonacci-server -f ./server
-    - docker build -t carloshj2011/fibonacci-worker -f ./worker
+    - docker build -t carloshj2011/fibonacci-client ./client
+    - docker build -t carloshj2011/fibonacci-nginx ./nginx
+    - docker build -t carloshj2011/fibonacci-server ./server
+    - docker build -t carloshj2011/fibonacci-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push carloshj2011/fibonacci-client
